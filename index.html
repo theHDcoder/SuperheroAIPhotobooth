@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR_Superhero_Photobooth</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"
+    ></script>
+  </head>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      /* The image used */
+      background-image: url("assets/4901458.jpg");
+
+      /* Full height */
+      height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    @font-face {
+      font-family: myFirstFont;
+      src: url(assets/Font/comic-adventure-comic-adventure-svg-400.otf);
+    }
+
+    .title {
+      margin-top: 36vh;
+      font-family: myFirstFont;
+      color: #00bcf7;
+      text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
+      font-size: xxx-large;
+    }
+    .cameraPanel {
+      text-align: center;
+      margin-top: 18vh;
+    }
+    .camera {
+      display: flex;
+      justify-content: center;
+    }
+    #webcam {
+      border-radius: 25px;
+      box-shadow: 0px 0px 33px 6px gray;
+    }
+    .setpanel {
+      position: absolute;
+      top: 43vw;
+      left: 36vw;
+      background-color: transparent;
+      z-index: 5;
+    }
+    .settingbox {
+      width: 150px;
+      height: 75px;
+      background-color: white;
+      color: black;
+      padding: 20px;
+      position: relative;
+      margin: 40px;
+      float: left;
+      border-radius: 18px;
+    }
+    .settingbox.setarrow-bottom:after {
+      content: " ";
+      position: absolute;
+      right: 30px;
+      bottom: -15px;
+      border-top: 15px solid rgb(255, 255, 255);
+      border-right: 15px solid transparent;
+      border-left: 15px solid transparent;
+      border-bottom: none;
+    }
+    .supeImgs {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 60%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+
+    .scrollable-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-auto-rows: 150px;
+      gap: 10px;
+      overflow-y: auto;
+      width: 100%;
+      height: 100%;
+    }
+
+    .scrollable-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .supeimg {
+      border-radius: 25px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="firstpage" style="text-align: center; overflow: hidden">
+      <h1 class="title">SUPERHERO AI PHOTOBOOTH</h1>
+      <button onclick="CameraInit()">START</button>
+    </div>
+    <div class="cameraPanel" style="display: none">
+      <div class="camera">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="canvas" class="d-none" style="display: none"></canvas>
+      </div>
+      <div class="capturebtn">
+        <button
+          id="takephoto"
+          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
+          onclick="TakePhoto()"
+        >
+          <img
+            src="assets/camera.png"
+            style="width: 100%; height: 100%"
+            alt=""
+            srcset=""
+          />
+        </button>
+        <button
+          id="takephoto"
+          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
+          onclick="CamSettings()"
+        >
+          <img
+            src="assets/settings.png"
+            style="width: 100%; height: 100%"
+            alt=""
+            srcset=""
+          />
+        </button>
+        <div class="setpanel" style="display: none">
+          <div class="settingbox setarrow-bottom">
+            <label for="dynamicDropdown">Select Camera: </label>
+            <select id="dynamicDropdown"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="finalize" style="display: none">
+        <button
+          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
+          onclick="RetakePhoto()"
+        >
+          <img
+            src="assets/back.png"
+            style="width: 100%; height: 100%"
+            alt=""
+            srcset=""
+          />
+        </button>
+        <button
+          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
+          onclick="FinalPhoto()"
+        >
+          <img
+            src="assets/check.png"
+            style="width: 100%; height: 100%"
+            alt=""
+            srcset=""
+          />
+        </button>
+      </div>
+    </div>
+    <div class="supeImgs" style="display: none">
+      <div class="container">
+        <div class="scrollable-grid">
+          <img
+            id="flash"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/flash.jpg"
+            alt="Image 1"
+          />
+          <img
+            id="iron"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/iron.jpg"
+            alt="Image 2"
+          />
+          <img
+            id="loki"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/loki.jpg"
+            alt="Image 3"
+          />
+          <img
+            id="panther"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/panther.jpg"
+            alt="Image 4"
+          />
+          <img
+            id="strange"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/strange.jpg"
+            alt="Image 5"
+          />
+          <img
+            id="supe"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/supe.jpg"
+            alt="Image 6"
+          />
+          <!-- Add more images as needed -->
+        </div>
+      </div>
+    </div>
+    <div id="imageContainer"></div>
+    <script>
+      var camWidth = "";
+      var camHeight = "";
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        camWidth = 360;
+        camHeight = 500;
+        // true for mobile device
+        //document.write("mobile device");
+      } else {
+        // camWidth = 500;
+        // camHeight = 360;
+        camWidth = 360;
+        camHeight = 500;
+        // false for not mobile device
+        // document.write("not mobile device");
+      }
+      const webcamElement = document.getElementById("webcam");
+      const canvasElement = document.getElementById("canvas");
+      const webcam = new Webcam(webcamElement, "user", canvasElement);
+
+      webcamElement.width = camWidth;
+      webcamElement.height = camHeight;
+      function CameraInit() {
+        $(".firstpage").hide();
+        $(".cameraPanel").show();
+        webcam
+          .start()
+          .then((result) => {
+            console.log("webcam started", result);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+      const dropdown = document.getElementById("dynamicDropdown");
+      function CamSettings() {
+        if ($(".setpanel").is(":visible")) {
+          $(".setpanel").hide();
+        } else {
+          dropdown.innerHTML = "";
+          const numberOfElements = webcam.webcamCount;
+          console.log(numberOfElements);
+          for (let i = 1; i <= numberOfElements; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.textContent = removeBracketsAndContent(
+              webcam.webcamList[i - 1].label
+            );
+            dropdown.appendChild(option);
+          }
+          $(".setpanel").show();
+        }
+      }
+      function removeBracketsAndContent(str) {
+        return str.replace(/\s*\(.*?\)\s*/g, "").trim();
+      }
+      dropdown.addEventListener("change", function () {
+        handleOptionChange(dropdown.value);
+      });
+      function handleOptionChange(selectedValue) {
+        // For demonstration, update the text content of a paragraph element
+        const selectedOptionParagraph =
+          document.getElementById("selectedOption");
+
+        // Add more functionality here based on the selected value
+        console.log(`Selected value: ${selectedValue}`);
+        webcam.stop();
+        webcam._selectedDeviceId =
+          webcam.webcamList[selectedValue - 1].deviceId;
+        webcam
+          .start()
+          .then((result) => {
+            console.log("webcam started");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+      // settings code ends here
+      function TakePhoto() {
+        var picture = webcam.snap();
+        $("#webcam").hide();
+        canvasElement.style.display = "block";
+        webcam.stop();
+        $(".capturebtn").hide();
+        $(".finalize").show();
+      }
+      function RetakePhoto() {
+        webcam
+          .start()
+          .then((result) => {
+            console.log("webcam started");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        $("#webcam").show();
+        $("#canvas").hide();
+        $(".capturebtn").show();
+        $(".finalize").hide();
+      }
+
+      function FinalPhoto() {
+        $(".cameraPanel").hide();
+        $(".supeImgs").show();
+      }
+      function SwapFace(item) {
+        console.log("testing...");
+        // const canvas = document.getElementById("canvas");
+        // const ctx = canvas.getContext("2d");
+        // const dataURL = canvas.toDataURL("image/png");
+        // const substringToRemove = "data:image/png;base64,";
+
+        // const parts = dataURL.split(substringToRemove);
+        // var newString = parts.join("");
+        // const imagePath = "assets/supe/" + item.id + ".jpg"; // Change this to the path of your image
+
+        // fetch(imagePath)
+        //   .then((response) => response.blob())
+        //   .then((blob) => {
+        //     const reader = new FileReader();
+        //     reader.onloadend = function () {
+        //       const base64String = reader.result;
+        //       //
+        //       const substringToRemove2 = "data:image/jpeg;base64,";
+        //       const parts2 = base64String.split(substringToRemove2);
+        //       var newString2 = parts2.join("");
+        //       const settings = {
+        //         async: true,
+        //         crossDomain: true,
+        //         url: "https://facehub-ai-face-swap.p.rapidapi.com/swap",
+        //         method: "POST",
+        //         headers: {
+        //           "content-type": "application/json",
+        //           "X-RapidAPI-Key":
+        //             "9191f0118bmsh51869036b0344f2p1841f9jsn9101364c60ca",
+        //           "X-RapidAPI-Host": "facehub-ai-face-swap.p.rapidapi.com",
+        //         },
+        //         processData: false,
+        //         data:
+        //           '{\r"source": "' +
+        //           newString +
+        //           '",\r"target": "' +
+        //           newString2 +
+        //           '"\r}',
+        //       };
+
+        //       $.ajax(settings).done(function (response) {
+        //         console.log(response.result);
+        //         const img = new Image();
+        //         img.src = "data:image/png;base64," + String(response.result);
+
+        //         // Display the image in the image container
+        //         const imageContainer =
+        //           document.getElementById("imageContainer");
+        //         imageContainer.innerHTML = ""; // Clear previous content
+        //         imageContainer.appendChild(img);
+        //       });
+        //     };
+        //     reader.readAsDataURL(blob);
+        //   })
+        //   .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>
