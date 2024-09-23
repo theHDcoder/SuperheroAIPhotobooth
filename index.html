@@ -9,12 +9,30 @@
       type="text/javascript"
       src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"
     ></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.768.0.js"></script>
+    <!-- <script src="bucketsender.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.js"></script>
+    <!-- <script src="faceSwapper.js"></script> -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="firstpage" style="text-align: center; overflow: hidden">
       <h1 class="title">SUPERHERO AI PHOTOBOOTH</h1>
-      <button onclick="CameraInit()">START</button>
+      <button id="caminitbtn" class="button-53" onclick="CameraInit()">
+        START
+      </button>
+    </div>
+    <div
+      id="loader"
+      style="display: none; justify-content: center; margin-top: 18vw"
+    >
+      <div class="super-pulse-loader">
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring delay"></div>
+        <div class="pulse-ring delay-2"></div>
+        <div class="center-dot"></div>
+        <div class="loading-text">LOADING...</div>
+      </div>
     </div>
     <div class="cameraPanel" style="display: none">
       <div class="camera">
@@ -22,11 +40,7 @@
         <canvas id="canvas" class="d-none" style="display: none"></canvas>
       </div>
       <div class="capturebtn">
-        <button
-          id="takephoto"
-          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
-          onclick="TakePhoto()"
-        >
+        <button id="takephoto" class="button-53" onclick="TakePhoto()">
           <img
             src="assets/camera.png"
             style="width: 100%; height: 100%"
@@ -34,39 +48,32 @@
             srcset=""
           />
         </button>
-        <button
-          id="takephoto"
-          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
-          onclick="CamSettings()"
-        >
+        <button id="camSetting" class="button-53" onclick="CamSettings()">
           <img
             src="assets/settings.png"
-            style="width: 100%; height: 100%; margin-top: -3vh"
+            style="width: 100%; height: 100%"
             alt=""
             srcset=""
           />
-          <div class="setpanel" style="display: none">
-            <div class="settingbox setarrow-bottom">
-              <span class="toggle-label">Select Camera:</span>
-              <label for="dynamicDropdown"> </label>
-              <select id="dynamicDropdown"></select>
-              <div class="toggle-container">
-                <span class="toggle-label">Mirror:</span>
-                <div class="switch">
-                  <input type="checkbox" id="toggleSwitch" />
-                  <label for="toggleSwitch" class="slider"></label>
-                </div>
+        </button>
+        <div class="setpanel" style="display: none">
+          <div class="settingbox setarrow-bottom">
+            <span class="toggle-label">Select Camera:</span>
+            <label for="dynamicDropdown"> </label>
+            <select id="dynamicDropdown"></select>
+            <div class="toggle-container">
+              <span class="toggle-label">Mirror:</span>
+              <div class="switch">
+                <input type="checkbox" id="toggleSwitch" />
+                <label for="toggleSwitch" class="slider"></label>
               </div>
             </div>
           </div>
-        </button>
+        </div>
       </div>
 
       <div class="finalize" style="display: none">
-        <button
-          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
-          onclick="RetakePhoto()"
-        >
+        <button class="button-53" id="retakebtn" onclick="RetakePhoto()">
           <img
             src="assets/back.png"
             style="width: 100%; height: 100%"
@@ -74,10 +81,7 @@
             srcset=""
           />
         </button>
-        <button
-          style="margin-top: 3vh; width: 7vw; height: 5vw; cursor: pointer"
-          onclick="FinalPhoto()"
-        >
+        <button id="finalbtn" class="button-53" onclick="FinalPhoto()">
           <img
             src="assets/check.png"
             style="width: 100%; height: 100%"
@@ -87,11 +91,19 @@
         </button>
       </div>
     </div>
-    <div class="supeImgs" style="display: none">
-      <div class="container">
-        <p>Select The SuperHero Image</p>
+    <div id="supePanel" class="supeImgs" style="display: none">
+      <div class="tabs">
+        <button class="tab-btn button-53" onclick="openTab(event, 'tab1')">
+          Male Heroes
+        </button>
+        <button class="tab-btn button-53" onclick="openTab(event, 'tab2')">
+          Female Heroes
+        </button>
+      </div>
 
-        <div class="scrollable-grid">
+      <div id="tab1" class="tab-content">
+        <div class="grid-container">
+          <!-- Add images for Tab 1 -->
           <img
             id="flash"
             class="supeimg"
@@ -134,11 +146,61 @@
             src="assets/supe/supe.jpg"
             alt="Image 6"
           />
-          <!-- Add more images as needed -->
+        </div>
+      </div>
+
+      <div id="tab2" class="tab-content">
+        <div class="grid-container">
+          <!-- Add images for Tab 2 -->
+          <img
+            id="witch"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/witch.png"
+            alt="Image 1"
+          />
+          <img
+            id="wonder"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/wonder.png"
+            alt="Image 2"
+          />
+          <img
+            id="harley"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/harley.png"
+            alt="Image 3"
+          />
+          <img
+            id="widow"
+            class="supeimg"
+            onclick="SwapFace(this)"
+            src="assets/supe/widow.png"
+            alt="Image 4"
+          />
         </div>
       </div>
     </div>
-    <div id="imageContainer"></div>
+    <div id="imageContainer" style="display: none">
+      <img
+        id="resultImage"
+        width="1024"
+        height="1024"
+        src="assets/supe/supe.jpg"
+        alt=""
+        srcset=""
+      />
+      <button
+        class="button-53"
+        onclick="downloadImage()"
+        style="margin: auto; top: 4vw"
+      >
+        Download
+      </button>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
