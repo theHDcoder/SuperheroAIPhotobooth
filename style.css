@@ -1,0 +1,196 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  /* The image used */
+  background-image: url("assets/4901458.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url(assets/Font/comic-adventure-comic-adventure-svg-400.otf);
+}
+
+.title {
+  margin-top: 36vh;
+  font-family: myFirstFont;
+  color: #00bcf7;
+  text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px black;
+  font-size: xxx-large;
+}
+.cameraPanel {
+  text-align: center;
+  margin-top: 18vh;
+}
+.camera {
+  display: flex;
+  justify-content: center;
+}
+#webcam {
+  border-radius: 25px;
+  box-shadow: 0px 0px 33px 6px gray;
+}
+.setpanel {
+  position: relative;
+  margin-top: -36vh;
+  margin-left: -15vw;
+  background-color: transparent;
+  z-index: 5;
+}
+.settingbox {
+  width: auto;
+  height: auto;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  position: relative;
+  margin: 40px;
+  float: left;
+  border-radius: 18px;
+}
+.settingbox.setarrow-bottom:after {
+  content: " ";
+  position: absolute;
+  right: 30px;
+  bottom: -15px;
+  border-top: 15px solid rgb(255, 255, 255);
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: none;
+}
+/* Switch container */
+.switch {
+  position: relative;
+  width: 53px;
+  height: 24px;
+  margin: 2vh;
+}
+
+/* Hide default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* Toggle container */
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Slider before (the circle) */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Checked state */
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .switch {
+    width: 50px;
+    height: 28px;
+  }
+
+  .slider:before {
+    height: 22px;
+    width: 22px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+  .setpanel {
+    margin-left: -45vw;
+  }
+}
+.supeImgs {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  background-color: antiquewhite;
+  border-radius: 18px;
+}
+
+.scrollable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-rows: 150px;
+  gap: 10px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.scrollable-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.webcamnormal {
+  transform: scale(-1, 1) !important;
+}
+.webcammirror {
+  transform: scale(1, 1) !important;
+}
+.supeimg {
+  border-radius: 25px;
+  cursor: pointer;
+}
