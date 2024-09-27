@@ -178,8 +178,8 @@ if (
 } else {
   // camWidth = 500;
   // camHeight = 360;
-  camWidth = 360;
-  camHeight = 500;
+  camWidth = 480;
+  camHeight = 600;
   // false for not mobile device
   // document.write("not mobile device");
 }
