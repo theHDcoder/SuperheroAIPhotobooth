@@ -171,15 +171,15 @@ if (
   )
 ) {
   // webcam.aspectRatio = 9 / 16;
-  camWidth = 360;
-  camHeight = 500;
+  camWidth = 480;
+  camHeight = 600;
   //true for mobile device
   //document.write("mobile device");
 } else {
   // camWidth = 500;
   // camHeight = 360;
-  camWidth = 300;
-  camHeight = 600;
+  camWidth = 360;
+  camHeight = 500;
   // false for not mobile device
   // document.write("not mobile device");
 }
