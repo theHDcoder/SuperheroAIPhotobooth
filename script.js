@@ -171,8 +171,8 @@ if (
   )
 ) {
   // webcam.aspectRatio = 9 / 16;
-  camWidth = 480;
-  camHeight = 600;
+  camWidth = 600;
+  camHeight = 360;
   //true for mobile device
   //document.write("mobile device");
 } else {
@@ -342,3 +342,7 @@ function downloadImage() {
 document.getElementById("resultImage").onload = function () {
   $(".supeImgs").hide();
 };
+
+function retry() {
+  window.location.reload();
+}
