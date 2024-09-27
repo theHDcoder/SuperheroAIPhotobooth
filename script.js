@@ -172,7 +172,7 @@ if (
 ) {
   // webcam.aspectRatio = 9 / 16;
   camWidth = 500;
-  camHeight = 560;
+  camHeight = 360;
   //true for mobile device
   //document.write("mobile device");
 } else {
