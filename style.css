@@ -434,7 +434,7 @@ input:checked + .slider:before {
     opacity: 0.5;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 1080px) {
   #takephoto {
     position: absolute;
     width: 22vw;
