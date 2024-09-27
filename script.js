@@ -1,1 +1,344 @@
-const _0x2a28e9=_0x5d57;(function(_0x40a5f0,_0x21bf75){const _0x4d23af=_0x5d57,_0x2b49ea=_0x40a5f0();while(!![]){try{const _0x397c3d=-parseInt(_0x4d23af(0x1ed))/0x1+-parseInt(_0x4d23af(0x1fc))/0x2*(-parseInt(_0x4d23af(0x1b5))/0x3)+-parseInt(_0x4d23af(0x1c9))/0x4+-parseInt(_0x4d23af(0x1da))/0x5+-parseInt(_0x4d23af(0x1b9))/0x6*(-parseInt(_0x4d23af(0x1e1))/0x7)+parseInt(_0x4d23af(0x1e5))/0x8+parseInt(_0x4d23af(0x1af))/0x9;if(_0x397c3d===_0x21bf75)break;else _0x2b49ea['push'](_0x2b49ea['shift']());}catch(_0x18c4f7){_0x2b49ea['push'](_0x2b49ea['shift']());}}}(_0x4b64,0x207d0));var albumBucketName=_0x2a28e9(0x1f0),bucketRegion=_0x2a28e9(0x1ef),IdentityPoolId=_0x2a28e9(0x20d);AWS[_0x2a28e9(0x1e9)][_0x2a28e9(0x1b6)]({'region':bucketRegion,'credentials':new AWS['CognitoIdentityCredentials']({'IdentityPoolId':IdentityPoolId})});var s3=new AWS['S3']({'apiVersion':_0x2a28e9(0x1dd),'params':{'Bucket':albumBucketName}});function addFileToBucket(_0x4cb64e,_0x3367a1,_0x591242){const _0x580239=_0x2a28e9;var _0x5e0b11=_0x4cb64e+'/',_0x329a9a=_0x5e0b11+_0x591242,_0x1224a4=new AWS['S3'][(_0x580239(0x1d0))]({'params':{'Bucket':albumBucketName,'Key':_0x329a9a,'Body':_0x3367a1,'ACL':_0x580239(0x206)}}),_0x154085=_0x1224a4['promise']();_0x154085[_0x580239(0x1ad)](function(_0x484c03){const _0x576daf=_0x580239;console[_0x576daf(0x1d3)](_0x576daf(0x1e7)),SupeImageSelectorPanel();},function(_0x4f321e){const _0x309743=_0x580239;return alert(_0x309743(0x1c8),_0x4f321e[_0x309743(0x1e8)]);});}function convertToHttps(_0x43fa51){const _0x473104=_0x2a28e9;if(_0x43fa51['startsWith'](_0x473104(0x1b7)))return _0x43fa51[_0x473104(0x1aa)](_0x473104(0x1b7),_0x473104(0x1ec));return _0x43fa51;}async function faceSwap(_0x69ed74,_0x3187cb,_0x1c12b1){const _0x2f8d54=_0x2a28e9,_0x40262a=new URLSearchParams();_0x40262a[_0x2f8d54(0x1a2)]('target_url',_0x69ed74),_0x40262a[_0x2f8d54(0x1a2)](_0x2f8d54(0x1df),_0x3187cb),await fetch('https://api.magicapi.dev/api/v1/capix/faceswap/faceswap/v1/image',{'method':_0x2f8d54(0x201),'headers':{'accept':_0x2f8d54(0x1c5),'x-magicapi-key':_0x1c12b1,'Content-Type':_0x2f8d54(0x1f4)},'body':_0x40262a})[_0x2f8d54(0x1ad)](_0x8fa861=>_0x8fa861[_0x2f8d54(0x1cf)]())['then'](_0x1727ad=>{const _0x34763a=_0x2f8d54;console[_0x34763a(0x1d3)](_0x1727ad),responseImage(_0x1727ad[_0x34763a(0x1bc)][_0x34763a(0x20f)],_0x1c12b1);})['catch'](_0x439068=>{const _0x4695c3=_0x2f8d54;console[_0x4695c3(0x1cc)]('Error:',_0x439068);});}async function responseImage(_0x5b5887,_0x125bef){const _0x698c2f=_0x2a28e9,_0x4a28ac=new URLSearchParams();_0x4a28ac['append'](_0x698c2f(0x20f),_0x5b5887),await fetch(_0x698c2f(0x1fa),{'method':_0x698c2f(0x201),'headers':{'accept':_0x698c2f(0x1c5),'x-magicapi-key':_0x125bef,'Content-Type':_0x698c2f(0x1f4)},'body':_0x4a28ac})[_0x698c2f(0x1ad)](_0x4b87d9=>_0x4b87d9['json']())[_0x698c2f(0x1ad)](_0x119273=>{const _0xf47efd=_0x698c2f;var _0x2f3a17=_0x119273[_0xf47efd(0x1bc)]['result_url'];console[_0xf47efd(0x1d3)](_0xf47efd(0x1e0),_0x2f3a17);if(_0x2f3a17!=undefined)_0x2f3a17=convertToHttps(_0x2f3a17),$('.supeImgs')['hide'](),addFileToBucket(_0xf47efd(0x1d8),_0x2f3a17,_0x2f3a17),document[_0xf47efd(0x1f9)]('loader')[_0xf47efd(0x1f1)][_0xf47efd(0x1e4)]=_0xf47efd(0x1b0),document['getElementById'](_0xf47efd(0x1c4))[_0xf47efd(0x1f1)][_0xf47efd(0x1e4)]=_0xf47efd(0x1b0),document[_0xf47efd(0x1f9)](_0xf47efd(0x1b3))['style'][_0xf47efd(0x1e4)]='block',document[_0xf47efd(0x1f9)](_0xf47efd(0x1e2))[_0xf47efd(0x1d5)]=_0x2f3a17;else _0x2f3a17==undefined&&(document['getElementById'](_0xf47efd(0x205))['style'][_0xf47efd(0x1e4)]='none',document[_0xf47efd(0x1f9)]('supePanel')[_0xf47efd(0x1f1)][_0xf47efd(0x1e4)]=_0xf47efd(0x1fe));})[_0x698c2f(0x1c0)](_0x1a6853=>{const _0x540509=_0x698c2f;console[_0x540509(0x1cc)](_0x540509(0x1f5),_0x1a6853);});}function generateRandomString(_0x1260e9){const _0x21c1fe=_0x2a28e9,_0x5a8e31='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';let _0x577b0c='';for(let _0x52f6a6=0x0;_0x52f6a6<_0x1260e9;_0x52f6a6++){const _0xed6ff5=Math[_0x21c1fe(0x207)](Math[_0x21c1fe(0x1c2)]()*_0x5a8e31['length']);_0x577b0c+=_0x5a8e31[_0xed6ff5];}return _0x577b0c;}var camWidth='',camHeight='';/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i[_0x2a28e9(0x1d4)](navigator[_0x2a28e9(0x1bd)])?(camWidth=0x168,camHeight=0x1f4):(camWidth=0x168,camHeight=0x1f4);const webcamElement=document['getElementById'](_0x2a28e9(0x1e3)),canvasElement=document[_0x2a28e9(0x1f9)](_0x2a28e9(0x1b4)),webcam=new Webcam(webcamElement,'user',canvasElement);webcamElement['width']=camWidth,webcamElement[_0x2a28e9(0x1a3)]=camHeight;function CameraInit(){const _0x322d66=_0x2a28e9;$(_0x322d66(0x1f6))['hide'](),$('.cameraPanel')[_0x322d66(0x20c)](),webcam[_0x322d66(0x1eb)]()[_0x322d66(0x1ad)](_0xde67e1=>{const _0xe99cf8=_0x322d66;console[_0xe99cf8(0x1d3)]('webcam\x20started',_0xde67e1);})[_0x322d66(0x1c0)](_0x252bb6=>{console['log'](_0x252bb6);});}const dropdown=document[_0x2a28e9(0x1f9)](_0x2a28e9(0x1db));function CamSettings(){const _0x45c95d=_0x2a28e9;if($(_0x45c95d(0x1a8))['is'](_0x45c95d(0x1a7)))$(_0x45c95d(0x1a8))['hide']();else{dropdown[_0x45c95d(0x1ac)]='';const _0x377b00=webcam[_0x45c95d(0x1ab)];console['log'](_0x377b00);for(let _0x4b45c9=0x1;_0x4b45c9<=_0x377b00;_0x4b45c9++){const _0x97824b=document['createElement'](_0x45c95d(0x1b8));_0x97824b['value']=_0x4b45c9,_0x97824b[_0x45c95d(0x1ba)]=removeBracketsAndContent(webcam['webcamList'][_0x4b45c9-0x1][_0x45c95d(0x202)]),dropdown[_0x45c95d(0x200)](_0x97824b);}$(_0x45c95d(0x1a8))[_0x45c95d(0x20c)]();}}function _0x4b64(){const _0x3a00c4=['active','checked','imageContainer','canvas','1083lTuXMv','update','http:/','option','294WIuOwW','textContent','trim','image_process_response','userAgent','transform:\x20scale(1,1)!important;','add','catch','download','random','match','supePanel','application/json','Switch\x20is\x20ON','.tab-content','There\x20was\x20an\x20error\x20uploading\x20your\x20photo:\x20','1039620UTKplH','.cameraPanel','setAttribute','error','stop','cm1dwsyly0003ld03eb1itbc1','json','ManagedUpload','body','https://hdbuckettest.s3.ap-south-1.amazonaws.com/AI_photobooth_supe/','log','test','src','.finalize','length','AI_photobooth_supe_render','test01','1042640CFeANJ','dynamicDropdown','snap','2012-10-17','.supeImgs','swap_url','Final\x20:','24367rkHpZI','resultImage','webcam','display','632800bfhONo','forEach','Successfully\x20uploaded\x20photo.','message','config','value','start','https:/','170832fwwyqC','click','ap-south-1','hdbuckettest','style','.tab-btn','deviceId','application/x-www-form-urlencoded','Error:','.firstpage','Switch\x20is\x20OFF','webcam\x20started','getElementById','https://api.magicapi.dev/api/v1/capix/faceswap/result/','_selectedDeviceId','312YWzgeH','demo_bucket_cam','block','downloaded_image.jpg','appendChild','POST','label','classList','#canvas','loader','public-read','floor','#webcam','remove','https://hdbuckettest.s3.ap-south-1.amazonaws.com/demo_bucket_cam/test01.jpeg','addEventListener','show','ap-south-1:f746089a-16b2-4b75-8d74-3fee63d59c02','currentTarget','request_id','append','height','onload','change','toDataURL',':visible','.setpanel','.jpeg','replace','webcamCount','innerHTML','then','hide','4197168mMhKkI','none'];_0x4b64=function(){return _0x3a00c4;};return _0x4b64();}function removeBracketsAndContent(_0x30412d){const _0x1d812a=_0x2a28e9;return _0x30412d[_0x1d812a(0x1aa)](/\s*\(.*?\)\s*/g,'')[_0x1d812a(0x1bb)]();}dropdown[_0x2a28e9(0x20b)]('change',function(){const _0x6e4f54=_0x2a28e9;handleOptionChange(dropdown[_0x6e4f54(0x1ea)]);});function handleOptionChange(_0xa1caba){const _0x1b3705=_0x2a28e9;console[_0x1b3705(0x1d3)]('Selected\x20value:\x20'+_0xa1caba),webcam[_0x1b3705(0x1cd)](),webcam[_0x1b3705(0x1fb)]=webcam['webcamList'][_0xa1caba-0x1][_0x1b3705(0x1f3)],webcam[_0x1b3705(0x1eb)]()[_0x1b3705(0x1ad)](_0x46b5c4=>{const _0x3c9ce2=_0x1b3705;console[_0x3c9ce2(0x1d3)](_0x3c9ce2(0x1f8));})['catch'](_0x24164b=>{const _0x3431a1=_0x1b3705;console[_0x3431a1(0x1d3)](_0x24164b);});}toggleSwitch[_0x2a28e9(0x20b)](_0x2a28e9(0x1a5),function(){const _0x440080=_0x2a28e9;toggleSwitch[_0x440080(0x1b2)]?(console[_0x440080(0x1d3)](_0x440080(0x1c6)),webcamElement[_0x440080(0x1cb)](_0x440080(0x1f1),_0x440080(0x1be))):(console['log'](_0x440080(0x1f7)),webcamElement['setAttribute'](_0x440080(0x1f1),'transform:\x20scale(-1,1)!important;'));});function TakePhoto(){const _0xc7dd2e=_0x2a28e9;var _0xe6245c=webcam[_0xc7dd2e(0x1dc)]();$(_0xc7dd2e(0x208))[_0xc7dd2e(0x1ae)](),canvasElement[_0xc7dd2e(0x1f1)][_0xc7dd2e(0x1e4)]='block',webcam['stop'](),$('.capturebtn')[_0xc7dd2e(0x1ae)](),$(_0xc7dd2e(0x1d6))[_0xc7dd2e(0x20c)]();}function RetakePhoto(){const _0x3645cc=_0x2a28e9;webcam[_0x3645cc(0x1eb)]()[_0x3645cc(0x1ad)](_0x5b3765=>{const _0x547dde=_0x3645cc;console[_0x547dde(0x1d3)](_0x547dde(0x1f8));})[_0x3645cc(0x1c0)](_0x2688e5=>{const _0x4a3301=_0x3645cc;console[_0x4a3301(0x1d3)](_0x2688e5);}),$(_0x3645cc(0x208))[_0x3645cc(0x20c)](),$(_0x3645cc(0x204))[_0x3645cc(0x1ae)](),$('.capturebtn')[_0x3645cc(0x20c)](),$(_0x3645cc(0x1d6))[_0x3645cc(0x1ae)]();}function _0x5d57(_0x4a8977,_0x4b4628){const _0x4b647f=_0x4b64();return _0x5d57=function(_0x5d5761,_0x5a0784){_0x5d5761=_0x5d5761-0x1a2;let _0x404bba=_0x4b647f[_0x5d5761];return _0x404bba;},_0x5d57(_0x4a8977,_0x4b4628);}function dataURLtoFile(_0x21dc24,_0x3c1a62){const _0x340a9c=_0x2a28e9;var _0x291c53=_0x21dc24['split'](','),_0x110f96=_0x291c53[0x0][_0x340a9c(0x1c3)](/:(.*?);/)[0x1],_0xa7bfde=atob(_0x291c53[0x1]),_0x6b9060=_0xa7bfde[_0x340a9c(0x1d7)],_0x392668=new Uint8Array(_0x6b9060);while(_0x6b9060--){_0x392668[_0x6b9060]=_0xa7bfde['charCodeAt'](_0x6b9060);}return new File([_0x392668],_0x3c1a62,{'type':_0x110f96});}function FinalPhoto(){const _0x39fbce=_0x2a28e9;addFileToBucket(_0x39fbce(0x1fd),dataURLtoFile(document[_0x39fbce(0x1f9)](_0x39fbce(0x1b4))[_0x39fbce(0x1a6)](),_0x39fbce(0x1d9)+_0x39fbce(0x1a9)),_0x39fbce(0x1d9)+_0x39fbce(0x1a9));}function SupeImageSelectorPanel(){const _0x27866c=_0x2a28e9;$(_0x27866c(0x1ca))[_0x27866c(0x1ae)](),$('.supeImgs')[_0x27866c(0x20c)]();}function SwapFace(_0x72fb93){const _0x3a557a=_0x2a28e9;document[_0x3a557a(0x1f9)](_0x3a557a(0x205))['style'][_0x3a557a(0x1e4)]='flex',$('.supeImgs')[_0x3a557a(0x1ae)](),console[_0x3a557a(0x1d3)]('testing...',_0x72fb93['id']);const _0xd58fa4=_0x3a557a(0x1ce);faceSwap(_0x3a557a(0x1d2)+_0x72fb93['id']+'.png',_0x3a557a(0x20a),_0xd58fa4);}function openTab(_0x177f32,_0x334350){const _0x394976=_0x2a28e9,_0x315ce4=document['querySelectorAll'](_0x394976(0x1c7));_0x315ce4[_0x394976(0x1e6)](_0x593149=>_0x593149['classList'][_0x394976(0x209)]('active'));const _0x48068d=document['querySelectorAll'](_0x394976(0x1f2));_0x48068d['forEach'](_0x1882d7=>_0x1882d7[_0x394976(0x203)][_0x394976(0x209)](_0x394976(0x1b1))),document[_0x394976(0x1f9)](_0x334350)['classList']['add'](_0x394976(0x1b1)),_0x177f32[_0x394976(0x20e)]['classList'][_0x394976(0x1bf)](_0x394976(0x1b1));}document[_0x2a28e9(0x20b)]('DOMContentLoaded',function(){const _0x4e0655=_0x2a28e9;document['querySelector'](_0x4e0655(0x1f2))[_0x4e0655(0x1ee)]();});function downloadImage(){const _0x44231a=_0x2a28e9,_0x49a6ed=document['getElementById'](_0x44231a(0x1e2)),_0x200ee8=document['createElement']('a');_0x200ee8['href']=_0x49a6ed[_0x44231a(0x1d5)],_0x200ee8[_0x44231a(0x1c1)]=_0x44231a(0x1ff),document[_0x44231a(0x1d1)]['appendChild'](_0x200ee8),_0x200ee8[_0x44231a(0x1ee)](),document[_0x44231a(0x1d1)]['removeChild'](_0x200ee8);}document[_0x2a28e9(0x1f9)](_0x2a28e9(0x1e2))[_0x2a28e9(0x1a4)]=function(){const _0x4d2fdb=_0x2a28e9;$(_0x4d2fdb(0x1de))[_0x4d2fdb(0x1ae)]();};
+var albumBucketName = "hdbuckettest";
+var bucketRegion = "ap-south-1";
+var IdentityPoolId = "ap-south-1:f746089a-16b2-4b75-8d74-3fee63d59c02";
+
+AWS.config.update({
+  region: bucketRegion,
+  credentials: new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: IdentityPoolId,
+  }),
+});
+
+var s3 = new AWS.S3({
+  apiVersion: "2012-10-17",
+  params: { Bucket: albumBucketName },
+});
+function wait(seconds) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, seconds * 1000); // Convert seconds to milliseconds
+  });
+}
+
+//function to send file in S3
+function addFileToBucket(albumName, file, fileName) {
+  // var files = document.getElementById("photoupload").files;
+  //   if (!files.length) {
+  //     return alert("Please choose a file to upload first.");
+  //   }
+  //   var file = files[0];
+  var albumPhotosKey = albumName + "/";
+  var photoKey = albumPhotosKey + fileName;
+
+  // Use S3 ManagedUpload class as it supports multipart uploads
+  var upload = new AWS.S3.ManagedUpload({
+    params: {
+      Bucket: albumBucketName,
+      Key: photoKey,
+      Body: file,
+      ACL: "public-read",
+    },
+  });
+
+  var promise = upload.promise();
+
+  promise.then(
+    function (data) {
+      // if (file.type != PDF || file.type != pdf) {
+      console.log("Successfully uploaded photo.");
+      SupeImageSelectorPanel();
+      //finalRender();
+      //viewAlbum(albumName);
+      // }
+    },
+    function (err) {
+      return alert("There was an error uploading your photo: ", err.message);
+    }
+  );
+}
+function convertToHttps(url) {
+  if (url.startsWith("http:/")) {
+    return url.replace("http:/", "https:/");
+  }
+  return url; // Return the original URL if it's not http
+}
+var requestid = "";
+async function faceSwap(targetUrl, swapUrl, apiKey) {
+  try {
+    const data = new URLSearchParams();
+    data.append("target_url", targetUrl);
+    data.append("swap_url", swapUrl);
+    await fetch(
+      "https://api.magicapi.dev/api/v1/capix/faceswap/faceswap/v1/image",
+      {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "x-magicapi-key": apiKey,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data,
+      }
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log(responseData);
+        requestid = responseData.image_process_response.request_id;
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("loadbtn").style.display = "block";
+        // wait(5);
+        // responseImage(responseData.image_process_response.request_id, apiKey);
+        // Assuming the API returns an image URL in responseData.imageUrl
+        //   const imageUrl = responseData.imageUrl; // Adjust this based on the actual response field
+        //   document.getElementById("resultImage").src = imageUrl;
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    //responseImage();
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+document.getElementById("imgloader").addEventListener("click", test);
+
+function test() {
+  document.getElementById("loader").style.display = "flex";
+  document.getElementById("loadbtn").style.display = "none";
+
+  responseImage();
+}
+//async function responseImage(requestId, apiKey) {
+async function responseImage() {
+  const apiKey = "cm1kwnj6n0001jm03omb9wpfi1111";
+  const data = new URLSearchParams();
+  data.append("request_id", requestid);
+
+  await fetch("https://api.magicapi.dev/api/v1/capix/faceswap/result/", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "x-magicapi-key": apiKey,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((responseData) => {
+      var imageUrl = responseData.image_process_response.result_url;
+      console.log("Final :", imageUrl);
+      if (imageUrl != undefined) {
+        imageUrl = convertToHttps(imageUrl);
+        $(".supeImgs").hide();
+        addFileToBucket("AI_photobooth_supe_render", imageUrl, imageUrl);
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("supePanel").style.display = "none";
+        document.getElementById("imageContainer").style.display = "block";
+        document.getElementById("resultImage").src = imageUrl;
+      } else if (imageUrl == undefined) {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("supePanel").style.display = "block";
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+function generateRandomString(length) {
+  // Characters to be included in the random string
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+
+  // Generate random characters by iterating for the length specified
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters[randomIndex];
+  }
+
+  return result;
+}
+//upload code ends
+
+var camWidth = "";
+var camHeight = "";
+
+const webcamElement = document.getElementById("webcam");
+const canvasElement = document.getElementById("canvas");
+const webcam = new Webcam(webcamElement, "user", canvasElement);
+if (
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  )
+) {
+  // webcam.aspectRatio = 9 / 16;
+  camWidth = 500;
+  camHeight = 560;
+  //true for mobile device
+  //document.write("mobile device");
+} else {
+  // camWidth = 500;
+  // camHeight = 360;
+  camWidth = 360;
+  camHeight = 500;
+  // false for not mobile device
+  // document.write("not mobile device");
+}
+webcamElement.width = camWidth;
+webcamElement.height = camHeight;
+function CameraInit() {
+  $(".firstpage").hide();
+  $(".cameraPanel").show();
+  webcam
+    .start()
+    .then((result) => {
+      console.log("webcam started", result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+const dropdown = document.getElementById("dynamicDropdown");
+function CamSettings() {
+  if ($(".setpanel").is(":visible")) {
+    $(".setpanel").hide();
+  } else {
+    dropdown.innerHTML = "";
+    const numberOfElements = webcam.webcamCount;
+    console.log(numberOfElements);
+    for (let i = 1; i <= numberOfElements; i++) {
+      const option = document.createElement("option");
+      option.value = i;
+      option.textContent = removeBracketsAndContent(
+        webcam.webcamList[i - 1].label
+      );
+      dropdown.appendChild(option);
+    }
+    $(".setpanel").show();
+  }
+}
+function removeBracketsAndContent(str) {
+  return str.replace(/\s*\(.*?\)\s*/g, "").trim();
+}
+dropdown.addEventListener("change", function () {
+  handleOptionChange(dropdown.value);
+});
+function handleOptionChange(selectedValue) {
+  console.log(`Selected value: ${selectedValue}`);
+  webcam.stop();
+  webcam._selectedDeviceId = webcam.webcamList[selectedValue - 1].deviceId;
+  webcam
+    .start()
+    .then((result) => {
+      console.log("webcam started");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+toggleSwitch.addEventListener("change", function () {
+  if (toggleSwitch.checked) {
+    console.log("Switch is ON");
+    webcamElement.setAttribute("style", "transform: scale(1,1)!important;");
+  } else {
+    console.log("Switch is OFF");
+    webcamElement.setAttribute("style", "transform: scale(-1,1)!important;");
+  }
+});
+// settings code ends here
+function TakePhoto() {
+  var picture = webcam.snap();
+  $("#webcam").hide();
+  canvasElement.style.display = "block";
+  webcam.stop();
+  $(".capturebtn").hide();
+  $(".finalize").show();
+}
+function RetakePhoto() {
+  webcam
+    .start()
+    .then((result) => {
+      console.log("webcam started");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  $("#webcam").show();
+  $("#canvas").hide();
+  $(".capturebtn").show();
+  $(".finalize").hide();
+}
+function dataURLtoFile(dataurl, filename) {
+  var arr = dataurl.split(","),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new File([u8arr], filename, { type: mime });
+}
+function FinalPhoto() {
+  addFileToBucket(
+    "demo_bucket_cam",
+    dataURLtoFile(
+      document.getElementById("canvas").toDataURL(),
+      "test01" + ".jpeg"
+    ),
+    "test01" + ".jpeg"
+  );
+}
+function SupeImageSelectorPanel() {
+  $(".cameraPanel").hide();
+  $(".supeImgs").show();
+}
+function SwapFace(item) {
+  document.getElementById("loader").style.display = "flex";
+  $(".supeImgs").hide();
+  console.log("testing...", item.id);
+  const apiKey = "cm1kwnj6n0001jm03omb9wpfi1111"; // Replace with your actual API key
+  faceSwap(
+    `https://hdbuckettest.s3.ap-south-1.amazonaws.com/AI_photobooth_supe/${item.id}.png`,
+    "https://hdbuckettest.s3.ap-south-1.amazonaws.com/demo_bucket_cam/test01.jpeg",
+    apiKey
+  );
+}
+
+function openTab(event, tabId) {
+  // Hide all tab contents
+  const tabContents = document.querySelectorAll(".tab-content");
+  tabContents.forEach((content) => content.classList.remove("active"));
+
+  // Remove active state from all buttons
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  tabButtons.forEach((button) => button.classList.remove("active"));
+
+  // Show the current tab content
+  document.getElementById(tabId).classList.add("active");
+
+  // Highlight the active button
+  event.currentTarget.classList.add("active");
+}
+
+// Automatically open the first tab
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector(".tab-btn").click();
+});
+
+function downloadImage() {
+  // Get the image element
+  const image = document.getElementById("resultImage");
+
+  // Create an anchor element
+  const a = document.createElement("a");
+  a.href = image.src; // Set href to the image source URL
+  a.download = "downloaded_image.jpg"; // Set the file name for download
+
+  // Programmatically click the anchor to trigger the download
+  document.body.appendChild(a); // Append the anchor to the document
+  a.click(); // Simulate a click to download the image
+  document.body.removeChild(a); // Clean up by removing the anchor element
+}
+document.getElementById("resultImage").onload = function () {
+  $(".supeImgs").hide();
+};

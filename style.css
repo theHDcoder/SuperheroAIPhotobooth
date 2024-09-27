@@ -94,6 +94,11 @@ body {
   margin: auto;
   width: 38vw;
 }
+#imgloader {
+  top: 42vh;
+  margin: auto;
+  width: 38vw;
+}
 .cameraPanel {
   text-align: center;
   margin-top: 18vh;
@@ -229,25 +234,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .switch {
-    width: 50px;
-    height: 28px;
-  }
-
-  .slider:before {
-    height: 22px;
-    width: 22px;
-  }
-
-  input:checked + .slider:before {
-    transform: translateX(22px);
-  }
-  .setpanel {
-    margin-left: -45vw;
-  }
-}
 .supeImgs {
   position: relative;
   margin-top: 19vh;
@@ -446,5 +432,54 @@ input:checked + .slider:before {
   }
   50% {
     opacity: 0.5;
+  }
+}
+@media (max-width: 600px) {
+  #takephoto {
+    position: absolute;
+    width: 22vw;
+    left: -15vw;
+    top: 6vh;
+  }
+  #camSetting {
+    position: absolute;
+    width: 22vw;
+    left: 18vw;
+    top: 6vh;
+  }
+  .switch {
+    width: 50px;
+    height: 28px;
+  }
+
+  .slider:before {
+    height: 22px;
+    width: 22px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+  .setpanel {
+    margin-left: -17vw;
+  }
+  #retakebtn {
+    position: absolute;
+    width: 22vw;
+    left: -15vw;
+    top: 6vh;
+  }
+  #finalbtn {
+    position: absolute;
+    width: 22vw;
+    left: 18vw;
+    top: 6vh;
+  }
+  #resultImage {
+    max-width: 1024px;
+    max-height: 1024px;
+    width: 70vw;
+    height: auto;
+    box-shadow: 0px 0px 33px 6px gray;
   }
 }
